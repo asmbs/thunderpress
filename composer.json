@@ -31,7 +31,7 @@
     "psr-0": {"Roots\\Bedrock\\Installer": "scripts"}
   },
   "scripts": {
-    "post-root-package-install": ["Roots\\Bedrock\\Installer::addSalts"]
+    "salts": ["Roots\\Bedrock\\Installer::addSalts"]
   },
   "repositories": [
     {
