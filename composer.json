@@ -21,7 +21,13 @@
     "psr-0": {"Roots\\Bedrock\\Installer": "scripts"}
   },
   "scripts": {
-    "salts": ["Roots\\Bedrock\\Installer::addSalts"]
+    "salts": ["Roots\\Bedrock\\Installer::addSalts"],
+    "post-install-cmd": [
+      "echo \"Running \\033[32mnpm install\\033[0m to install NPM modules...\" && npm install --quiet"
+    ],
+    "post-update-cmd": [
+      "echo \"Running \\033[32mnpm install\\033[0m to update NPM modules...\" && npm install --quiet"
+    ]
   },
   "repositories": [
     {
