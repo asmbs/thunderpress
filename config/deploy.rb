@@ -8,11 +8,8 @@ set :term_mode, :exec
 set :repo_name,  'asmbs/thunderpress' # <-- Replace this with your repo identifier
 set :repo_url, %[https://github.com/#{repo_name}]
 set :repository, %[#{repo_url}.git]
-
-# -- Checkout references
-set :ref_tag,    ''       # For tag-based deploys
-set :ref_commit, ''       # For commit-based deploys
-set :ref_branch, 'master' # For branch-based deploys
+set :default_mode, 'branch' # Default mode for deploys that don't specify a commit, tag or branch
+set :default_ref, 'master'  # Default ref for deploys that don't specify a commit, tag or branch
 
 # -- Global SSH settings
 set :forward_agent, true
@@ -21,8 +18,8 @@ set :forward_agent, true
 set :shared_paths, []
 
 # -- Slack settings
-set :slack_enabled, false
-# set :slack_url, ''
+set :slack_enabled, true
+set :slack_url, lambda { %[https://hooks.slack.com/services/#{slack_key}] }
 # set :slack_username, ''
 # set :slack_channel, ''
 
@@ -37,29 +34,17 @@ task :environment do
   $server = ENV.has_key?('server') ? ENV['server'] : 'production'
 
   # -- Generate deploy settings for each server
-  case $server
-  when 'production'
-
-    # -- SSH settings
-    set :domain, ''
-    set :user,   ''
-    set :port,   '22'
-    # set :identity_file, '~/.ssh/path/to/key' # <-- If you're using a keypair, place the path to your private key here
-
-    # -- Deploy path on server
-    set :deploy_to, ''
-
-    # -- Set repository reference for deployment
-    set_ref('tag')
-
-    # -- Set lists of commands to run on success or failure of deployment
-    $launch_commands = [
-      %[composer install],
-      %[sudo service httpd restart]
-    ]
-    $clean_commands = []
-
+  unless $server
+    print_error %[A server must be specified.]
+    exit
   end
+
+  # -- Load settings for environment
+  require_relative %[./deploy/#{$server}.rb]
+
+  # -- Set up commit/tag/branch references for deploy
+  set_deploy_ref settings.default_mode, settings.default_ref
+
 end
 
 
@@ -118,21 +103,35 @@ end
 # ----------------------------------------------------------------------------------------------
 
 # -- Set repository reference (branch/commit/tag)
-def set_ref (default_mode='branch')
-  mode = ENV.has_key?('mode') ? ENV['mode'] : default_mode
+def set_deploy_ref(default_mode='branch', default_ref='master')
+  # Load defaults first
+  mode = default_mode
+  ref = default_ref
+  # Try loading from command line to override defaults
+  if ENV['commit']
+    mode = 'commit'
+    ref = ENV['commit']
+  elsif ENV['tag']
+    mode = 'tag'
+    ref = ENV['tag']
+  elsif ENV['branch']
+    mode = 'branch'
+    ref = ENV['branch']
+  end
+  # Set Mina deploy parameters based on mode and ref
   case mode
   when 'tag'
-    set :commit, ref_tag
+    set :commit, ref
   when 'commit'
-    set :commit, ref_commit
+    set :commit, ref
   when 'branch'
-    set :branch, ref_branch
+    set :branch, ref
   end
 end
 
 # -- Check to see whether Slack can be used
 def slack_enabled?
-  return settings.slack_enabled && settings.slack_url
+  return settings.slack_enabled && settings.slack_key
 end
 
 # -- Send Slack notification
