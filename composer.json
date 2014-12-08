@@ -33,13 +33,53 @@
     {
       "type": "composer",
       "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "friartuck6000/wp-parsedown",
+        "type": "wordpress-muplugin",
+        "version": "0.5.1",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.1.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "asmbs/wp-sugar",
+        "type": "wordpress-muplugin",
+        "version": "0.4.2",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/asmbs/wp-sugar/archive/v0.4.2.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "asmbs/wp-ip",
+        "type": "wordpress-plugin",
+        "version": "1.0.1",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/asmbs/wp-ip/archive/v1.0.1.zip"
+        }
+      }
     }
   ],
   "require": {
     "php": ">=5.4",
     "johnpbloch/wordpress": "4.0.1",
     "composer/installers": "v1.0.12",
-    "vlucas/phpdotenv": "1.0.9"
+    "vlucas/phpdotenv": "1.0.9",
+    "wpackagist-plugin/wordpress-https": "~3.3.6",
+    "friartuck6000/wp-parsedown": "~0.5",
+    "asmbs/wp-sugar": "~0.4",
+    "asmbs/wp-ip": "~1.0"
   },
   "extra": {
     "installer-paths": {
