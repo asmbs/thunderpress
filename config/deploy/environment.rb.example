@@ -1,0 +1,29 @@
+# EXAMPLE ENVIRONMENT CONFIGURATION
+# Server: [name]
+
+# -- SSH settings.
+set :domain, '54.84.103.104'
+set :user,   'ec2-user'
+set :port,   '22'
+set :identity_file, '~/.ssh/your_private_key' # <-- Remove this setting if you're not using a key
+
+# -- Server deploy path (should be an absolute path).
+set :deploy_to, '/var/www/minatest'
+
+# -- Set the default deploy ref -- NOTE: if a ref is specified on the command line, it will
+#    override this setting.
+set :default_mode, 'branch'
+set :default_ref,  'development'
+
+# -- For successful deploys, the commands in launch_commands will be run at the end of the
+#    script; add commands for things like dependency installs, logging, server reboots, etc.
+#    here. NOTE: these commands will be run from :deploy_to as the CWD.
+$launch_commands = [
+  %[composer install --no-scripts],
+  %[sudo service httpd restart]
+]
+
+# -- For failed deploys, the commands in clean_commands will be run at the end of the script;
+#    run commands to remove files, make a log entry, etc. here. NOTE: these commands will be
+#    run from :deploy_to as the CWD.
+$clean_commands = []

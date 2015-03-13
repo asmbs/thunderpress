@@ -18,10 +18,11 @@ set :forward_agent, true
 set :shared_paths, []
 
 # -- Slack settings
-set :slack_enabled, true
+set :slack_enabled, false
+set :slack_key, 'YOUR_SLACK_KEY_HERE'
 set :slack_url, lambda { %[https://hooks.slack.com/services/#{slack_key}] }
-# set :slack_username, ''
-# set :slack_channel, ''
+# set :slack_username, '' # Optional bot-name override
+# set :slack_channel, '' # Optional channel override
 
 
 # ----------------------------------------------------------------------------------------------
