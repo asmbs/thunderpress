@@ -11,8 +11,8 @@ web/.htaccess
 node_modules
 
 # -- Mina environment configs
-/config/deploy/
-!/config/deploy/environment.rb.example
+config/deploy/*
+!config/deploy/environment.rb.example
 
 # -- Other vendor packages (not WordPress-related)
 vendor/*
