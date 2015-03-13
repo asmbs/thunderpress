@@ -4,8 +4,30 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f294c1d4ba13182818bd55e3395f87c9",
+    "hash": "73182c139cde11ee29caa617fc38fa19",
     "packages": [
+        {
+            "name": "asmbs/wp-ip",
+            "version": "1.0.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/asmbs/wp-ip/archive/v1.0.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "asmbs/wp-sugar",
+            "version": "0.4.2",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/asmbs/wp-sugar/archive/v0.4.2.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-muplugin"
+        },
         {
             "name": "composer/installers",
             "version": "v1.0.12",
@@ -89,6 +111,17 @@
                 "zikula"
             ],
             "time": "2014-02-24 04:21:34"
+        },
+        {
+            "name": "friartuck6000/wp-parsedown",
+            "version": "0.5.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-muplugin"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -222,6 +255,29 @@
                 "environment"
             ],
             "time": "2014-10-16 14:50:21"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-https",
+            "version": "3.3.6",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/wordpress-https/",
+                "reference": "tags/3.3.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://downloads.wordpress.org/plugin/wordpress-https.3.3.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "replace": {
+                "wpackagist/wordpress-https": "self.version"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "http://wordpress.org/plugins/wordpress-https/"
         }
     ],
     "packages-dev": [],

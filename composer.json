@@ -1,49 +1,85 @@
 {
-  "name": "roots/bedrock",
+  "name": "asmbs/thunderpress",
   "type": "project",
   "license": "MIT",
-  "description": "A modern WordPress stack",
-  "homepage": "http://roots.io/wordpress-stack/",
+  "description": "A slimmer WordPress stack",
+  "homepage": "https://github.com/asmbs/thunderpress",
   "authors": [
     {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
-    },
-    {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
+      "name": "Kyle Tucker",
+      "email": "kyleatucker@gmail.com",
+      "homepage": "https://github.com/friartuck6000"
     }
   ],
   "keywords": [
-    "wordpress", "stack", "capistrano", "composer", "vagrant", "wp"
+    "wordpress", "stack", "asmbs", "composer", "mina", "wp", "grunt"
   ],
   "support": {
-    "issues": "https://github.com/roots/bedrock/issues",
-    "forum": "http://discourse.roots.io/category/bedrock"
-  },
-  "config": {
-    "preferred-install": "dist",
-    "generate-salts": true
+    "issues": "https://github.com/asmbs/thunderpress/issues"
   },
   "autoload": {
     "psr-0": {"Roots\\Bedrock\\Installer": "scripts"}
   },
   "scripts": {
-    "post-root-package-install": ["Roots\\Bedrock\\Installer::addSalts"]
+    "salts": ["Roots\\Bedrock\\Installer::addSalts"],
+    "post-install-cmd": [
+      "echo \"Running \\033[32mnpm install\\033[0m to install NPM modules...\" && npm install --quiet"
+    ],
+    "post-update-cmd": [
+      "echo \"Running \\033[32mnpm install\\033[0m to update NPM modules...\" && npm install --quiet"
+    ]
   },
   "repositories": [
     {
       "type": "composer",
       "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "friartuck6000/wp-parsedown",
+        "type": "wordpress-muplugin",
+        "version": "0.5.1",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.1.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "asmbs/wp-sugar",
+        "type": "wordpress-muplugin",
+        "version": "0.4.2",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/asmbs/wp-sugar/archive/v0.4.2.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "asmbs/wp-ip",
+        "type": "wordpress-plugin",
+        "version": "1.0.1",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/asmbs/wp-ip/archive/v1.0.1.zip"
+        }
+      }
     }
   ],
   "require": {
     "php": ">=5.4",
     "johnpbloch/wordpress": "4.0.1",
     "composer/installers": "v1.0.12",
-    "vlucas/phpdotenv": "1.0.9"
+    "vlucas/phpdotenv": "1.0.9",
+    "wpackagist-plugin/wordpress-https": "~3.3.6",
+    "friartuck6000/wp-parsedown": "~0.5",
+    "asmbs/wp-sugar": "~0.4",
+    "asmbs/wp-ip": "~1.0"
   },
   "extra": {
     "installer-paths": {

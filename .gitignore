@@ -1,17 +1,24 @@
-# WordPress
+# -- WordPress
 web/wp
 web/.htaccess
 
-# WP-CLI
-db-sync
-sql-dump-*.sql
-
-# Dotenv
+# -- Dotenv
 .env
 .env.*
 !.env.example
 
-# Application
+# -- NPM
+node_modules
+
+# -- Mina environment configs
+/config/deploy/
+!/config/deploy/environment.rb.example
+
+# -- Other vendor packages (not WordPress-related)
+vendor/*
+!vendor/.gitkeep
+
+# -- Application defaults
 web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*
@@ -19,17 +26,12 @@ web/app/mu-plugins/*
 web/app/upgrade
 web/app/uploads/*
 !web/app/uploads/.gitkeep
+
+# -- Default MU plugins
 !web/app/mu-plugins/disallow-indexing.php
 !web/app/mu-plugins/register-theme-directory.php
 !web/app/mu-plugins/bedrock-autoloader.php
 
-# Vendor (e.g. Composer)
-vendor/*
-!vendor/.gitkeep
-
-# Node Package Manager
-node_modules
-
-# Vagrant
-bin
-.vagrant
+# -- Integrated plugins and themes (kept as part of this package)
+# Example:
+# !web/app/plugins/my-plugin-folder/
