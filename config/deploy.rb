@@ -15,7 +15,10 @@ set :default_ref, 'master'  # Default ref for deploys that don't specify a commi
 set :forward_agent, true
 
 # -- Shared paths and files
-set :shared_paths, []
+set :shared_paths, [
+  'web/app/uploads',  # WordPress uploads path -- do not remove
+  '.env'              # Environment configuration -- do not remove
+]
 
 # -- Slack settings
 set :slack_enabled, false
@@ -61,6 +64,8 @@ task :setup => :environment do
   #    `deploy:link_shared_paths` is run
   # Example:
   # queue! %[mkdir -p -m 777 "#{shared_path_dir}/uploads"]
+  queue! %[mkdir -p -m 777 "#{shared_path_dir}/web/app/uploads"]  # WordPress uploads path
+  queue! %[touch "#{shared_path_dir}/.env"]                       # Environment configuration
 
 end
 
