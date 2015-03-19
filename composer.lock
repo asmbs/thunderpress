@@ -4,8 +4,19 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "73182c139cde11ee29caa617fc38fa19",
+    "hash": "f80275d6675a2a25548310d27ff6ee6c",
     "packages": [
+        {
+            "name": "asmbs/wp-deblogify",
+            "version": "1.0.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/asmbs/wp-deblogify/archive/v1.0.1.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "wordpress-plugin"
+        },
         {
             "name": "asmbs/wp-ip",
             "version": "1.0.1",
@@ -257,6 +268,26 @@
             "time": "2014-10-16 14:50:21"
         },
         {
+            "name": "wpackagist-plugin/p3-profiler",
+            "version": "1.5.3.8",
+            "source": {
+                "type": "svn",
+                "url": "http://plugins.svn.wordpress.org/p3-profiler/",
+                "reference": "tags/1.5.3.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/p3-profiler.1.5.3.8.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/p3-profiler/"
+        },
+        {
             "name": "wpackagist-plugin/wordpress-https",
             "version": "3.3.6",
             "source": {
@@ -285,6 +316,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4"
     },
