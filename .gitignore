@@ -35,3 +35,4 @@ web/app/uploads/*
 # -- Integrated plugins and themes (kept as part of this package)
 # Example:
 # !web/app/plugins/my-plugin-folder/
+!web/app/plugins/ga-thunderpress/
