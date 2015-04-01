@@ -2,6 +2,11 @@
 
 ## Changelog
 
+### 1.2.0
+
+-   Add embedded Google Analytics plugin to print the GA tracking script automatically with the
+    use of the `GA_PROPERTY_ID` environment variable.
+
 ### 1.1.0
 
 -   Move to WordPress 4.1.x release channel
