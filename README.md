@@ -12,6 +12,8 @@ ThunderPress is a WordPress stack, based on [Bedrock][bedrock]; it includes a fe
 2.  [Deploying to another server with Mina](#deploying-to-another-server-with-mina)
     -   [Setting up and deploying](#setting-up-and-deploying)
 3.  [Environment variables](#environment-variables)
+    -   [Supported parameters](#supported-parameters)
+    -   [Google analytics plugin](#google-analytics-plugin)
 
 ## Getting started (on development)
 
@@ -99,5 +101,17 @@ _**Note:** You can generate these automatically by running `composer run-script 
 -   `WP_USER_TABLE` — Use another WordPress installation (on the same database) to manage user data
 -   `WP_USER_META_TABLE` — Use another WordPress installation (on the same database) to manage user metadata
 -   `WP_MEMORY_LIMIT`
+
+#### Google analytics plugin:
+
+Thunderpress includes a plugin (it's _not_ must-use, you have to activate it) for automatically printing a Google Universal
+Analytics tracking script when the following two criteria are **true**:
+
+1.  There is a `GA_PROPERTY_ID` key in the environment configuration (.env) file.
+2.  The user is not a logged-in administrator or editor.
+
+To start using this plugin, that's all you have to do — activate it, then make sure you set the `GA_PROPERTY_ID` key in your
+environment config.
+
 
 [phpdotenv]: https://github.com/vlucas/phpdotenv
