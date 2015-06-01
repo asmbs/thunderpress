@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Thunderpress – Google Analytics
- * Version:     1.2.0
+ * Version:     1.2.1
  * Description: Enables Google Analytics tracking independent of themes or other plugins by use of an environment variable.
  * Plugin URI:  https://github.com/asmbs/thunderpress
  * Author:      The A-TEAM (ASMBS)
