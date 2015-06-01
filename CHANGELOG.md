@@ -2,6 +2,12 @@
 
 ## Changelog
 
+### 1.2.1
+
+-   Merged latest release of **roots/bedrock**
+    ([3369fe4](https://github.com/roots/bedrock/tree/3369fe4))
+-   Updated refs to bundled packages
+
 ### 1.2.0
 
 -   Add embedded Google Analytics plugin to print the GA tracking script automatically with the
