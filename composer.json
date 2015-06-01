@@ -39,10 +39,10 @@
       "package": {
         "name": "friartuck6000/wp-parsedown",
         "type": "wordpress-muplugin",
-        "version": "0.5.1",
+        "version": "0.5.3",
         "dist": {
           "type": "zip",
-          "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.1.zip"
+          "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.3.zip"
         }
       }
     },
@@ -85,9 +85,9 @@
   ],
   "require": {
     "php": ">=5.4",
-    "johnpbloch/wordpress": "~4.1",
-    "composer/installers": "v1.0.12",
-    "vlucas/phpdotenv": "1.0.9",
+    "johnpbloch/wordpress": "4.2.*",
+    "composer/installers": "~1.0.12",
+    "vlucas/phpdotenv": "~1.0.9",
     "wpackagist-plugin/wordpress-https": "~3.3.6",
     "friartuck6000/wp-parsedown": "~0.5",
     "asmbs/wp-sugar": "~0.4",
