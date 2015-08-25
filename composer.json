@@ -30,7 +30,8 @@
     "wordpress", "stack", "asmbs", "composer", "mina", "wp", "grunt"
   ],
   "support": {
-    "issues": "https://github.com/asmbs/thunderpress/issues"
+    "issues": "https://github.com/asmbs/thunderpress/issues",
+    "forum": "https://discourse.roots.io/category/bedrock"
   },
   "autoload": {
     "psr-0": {"Roots\\Bedrock\\Installer": "scripts"}
