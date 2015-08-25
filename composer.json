@@ -6,9 +6,24 @@
   "homepage": "https://github.com/asmbs/thunderpress",
   "authors": [
     {
+      "name": "Scott Walkinshaw",
+      "email": "scott.walkinshaw@gmail.com",
+      "homepage": "https://github.com/swalkinshaw"
+    },
+    {
+      "name": "Ben Word",
+      "email": "ben@benword.com",
+      "homepage": "https://github.com/retlehs"
+    },
+    {
       "name": "Kyle Tucker",
       "email": "kyleatucker@gmail.com",
       "homepage": "https://github.com/friartuck6000"
+    },
+    {
+      "name": "James Osterhout",
+      "email": "jrosterhout@gmail.com",
+      "homepage": "https://github.com/jamost"
     }
   ],
   "keywords": [
