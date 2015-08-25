@@ -23,6 +23,10 @@ web/app/uploads/*
 web/wp
 web/.htaccess
 
+# -- WP-CLI
+db-sync
+sql-dump-*.sql
+
 # -- Dotenv
 .env
 .env.*
