@@ -101,16 +101,16 @@
   ],
   "require": {
     "php": ">=5.4",
-    "johnpbloch/wordpress": "~4.3.*",
-    "composer/installers": "~1.0.12",
-    "vlucas/phpdotenv": "~2.0.1",
-    "wpackagist-plugin/wordpress-https": "~3.3.6",
+    "johnpbloch/wordpress": "~4.4",
+    "composer/installers": "~1.0",
+    "vlucas/phpdotenv": "~2.2",
+    "wpackagist-plugin/wordpress-https": "~3.3",
     "friartuck6000/wp-parsedown": "~0.5",
     "asmbs/wp-sugar": "~0.4",
     "asmbs/wp-ip": "~1.0",
     "asmbs/wp-deblogify": "~1.0",
     "wpackagist-plugin/p3-profiler": "~1.5",
-    "wpackagist-plugin/wp-mail-smtp": "0.9.5"
+    "wpackagist-plugin/wp-mail-smtp": "~0.9"
   },
   "extra": {
     "installer-paths": {
