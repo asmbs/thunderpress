@@ -1,4 +1,13 @@
-# Application
+# -- IDE & System Related Files #
+.buildpath
+.project
+.settings
+.DS_Store
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# -- Application
 web/app/plugins/*
 !web/app/plugins/.gitkeep
 web/app/mu-plugins/*
@@ -13,6 +22,10 @@ web/app/uploads/*
 # -- WordPress
 web/wp
 web/.htaccess
+
+# -- WP-CLI
+db-sync
+sql-dump-*.sql
 
 # -- Dotenv
 .env

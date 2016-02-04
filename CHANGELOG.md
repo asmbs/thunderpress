@@ -2,6 +2,21 @@
 
 ## Changelog
 
+### 1.2.2
+-	Add Roots developers and James to composer authors propery
+-	Updated refs to bundled packages  
+	WordPress 4.3.*  
+	phpdotenv 2.0.1  
+-	Add wp-mail-smtp mu-plugin ref to composer  
+	wp-mail-smtp 0.9.5
+-	Added named constants to `.env.example` and `application.php`  
+	Custom user tables  
+	GA Tracking Propery ID  
+	WP Mail SMTP  
+-	Updated gitignore to exclude IDE related properies and exports from WP-CLI utlities  
+-	Added wp-cli.yml from Bedrook source updates
+
+
 ### 1.2.1
 
 -   Merged latest release of **roots/bedrock**
