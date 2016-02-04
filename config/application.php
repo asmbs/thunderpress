@@ -9,7 +9,11 @@ if (file_exists($root_dir . '/.env')) {
   Dotenv::load($root_dir);
 }
 
-Dotenv::required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
+$dotenv = new Dotenv\Dotenv($root_dir);
+if (file_exists($root_dir . '/.env')) {
+  $dotenv->load();
+  $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
+}
 
 /**
  * Set up our global environment constant and load its config first
@@ -48,6 +52,23 @@ define('DB_COLLATE', '');
 $table_prefix = getenv('DB_PREFIX') ?: 'wp_';
 
 /**
+ * Custom user table settings (if applicable)
+ */
+if (getenv('USER_TABLE'))
+{
+  define('CUSTOM_USER_TABLE', getenv('USER_TABLE'));
+  if (getenv('USER_META_TABLE'))
+    define('CUSTOM_USER_META_TABLE', getenv('USER_META_TABLE'));
+}
+/**
+ * WordPress Localized Language
+ * Default: English
+ *
+ * A corresponding MO file for the chosen language must be installed to app/languages
+ */
+define('WPLANG', '');
+
+/**
  * Authentication Unique Keys and Salts
  */
 define('AUTH_KEY', getenv('AUTH_KEY'));
@@ -71,4 +92,21 @@ define('DISALLOW_FILE_EDIT', true);
  */
 if (!defined('ABSPATH')) {
   define('ABSPATH', $webroot_dir . '/wp/');
+}
+
+/**
+ * Define WP SMTP options from global enviroment constants
+ */
+if (getenv('WPMS_ON') = true ) {
+  define('WPMS_ON', getenv('WPMS_ON'));
+  define('WPMS_MAIL_FROM', getenv('WPMS_MAIL_FROM'));
+  define('WPMS_MAIL_FROM_NAME', getenv('WPMS_MAIL_FROM_NAME'));
+  define('WPMS_MAILER', getenv('WPMS_MAILER'));
+  define('WPMS_SET_RETURN_PATH', getenv('WPMS_SET_RETURN_PATH'));
+  define('WPMS_SMTP_HOST', getenv('WPMS_SMTP_HOST'));
+  define('WPMS_SMTP_PORT', getenv('WPMS_SMTP_PORT'));
+  define('WPMS_SSL', getenv('WPMS_SSL'));
+  define('WPMS_SMTP_AUTH', getenv('WPMS_SMTP_AUTH'));
+  define('WPMS_SMTP_USER', getenv('WPMS_SMTP_USER'));
+  define('WPMS_SMTP_PASS', getenv('WPMS_SMTP_PASS'));
 }
