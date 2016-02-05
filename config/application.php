@@ -6,11 +6,7 @@ $webroot_dir = $root_dir . '/web';
  * Use Dotenv to set required environment variables and load .env file in root
  */
 if (file_exists($root_dir . '/.env')) {
-  Dotenv::load($root_dir);
-}
-
-$dotenv = new Dotenv\Dotenv($root_dir);
-if (file_exists($root_dir . '/.env')) {
+  $dotenv = new Dotenv\Dotenv($root_dir);
   $dotenv->load();
   $dotenv->required(['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'WP_HOME', 'WP_SITEURL']);
 }
@@ -97,7 +93,7 @@ if (!defined('ABSPATH')) {
 /**
  * Define WP SMTP options from global enviroment constants
  */
-if (getenv('WPMS_ON') = true ) {
+if (getenv('WPMS_ON') == true ) {
   define('WPMS_ON', getenv('WPMS_ON'));
   define('WPMS_MAIL_FROM', getenv('WPMS_MAIL_FROM'));
   define('WPMS_MAIL_FROM_NAME', getenv('WPMS_MAIL_FROM_NAME'));
