@@ -29,12 +29,8 @@
         "salts": [
             "Roots\\Bedrock\\Installer::addSalts"
         ],
-        "post-install-cmd": [
-            "npm install --quiet"
-        ],
-        "post-update-cmd": [
-            "npm install --quiet"
-        ]
+        "post-install-cmd": [],
+        "post-update-cmd": []
     },
     "repositories": [
         {
