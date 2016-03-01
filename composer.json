@@ -36,73 +36,25 @@
         {
             "type": "composer",
             "url": "http://wpackagist.org"
-        },
-        {
-            "type": "package",
-            "package": {
-            "name": "friartuck6000/wp-parsedown",
-            "type": "wordpress-muplugin",
-            "version": "0.5.3",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.3.zip"
-            }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-            "name": "asmbs/wp-sugar",
-            "type": "wordpress-muplugin",
-            "version": "0.4.2",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/asmbs/wp-sugar/archive/v0.4.2.zip"
-            }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-            "name": "asmbs/wp-ip",
-            "type": "wordpress-plugin",
-            "version": "1.0.1",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/asmbs/wp-ip/archive/v1.0.1.zip"
-            }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-            "name": "asmbs/wp-deblogify",
-            "type": "wordpress-plugin",
-            "version": "1.0.1",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/asmbs/wp-deblogify/archive/v1.0.1.zip"
-            }
-            }
         }
     ],
     "require": {
         "php": ">=5.4",
-        "johnpbloch/wordpress": "~4.4",
-        "composer/installers": "~1.0",
-        "vlucas/phpdotenv": "~2.2",
-        "wpackagist-plugin/wordpress-https": "~3.3",
-        "friartuck6000/wp-parsedown": "~0.5",
-        "asmbs/wp-sugar": "~0.4",
-        "asmbs/wp-ip": "~1.0",
-        "asmbs/wp-deblogify": "~1.0",
-        "wpackagist-plugin/p3-profiler": "~1.5",
-        "wpackagist-plugin/wp-mail-smtp": "~0.9"
+        "johnpbloch/wordpress": "^4.4",
+        "composer/installers": "^1.0",
+        "vlucas/phpdotenv": "^2.2",
+        "asmbs/wp-ip": "^1.0",
+        "asmbs/wp-unblog": "^1.1",
+        "friartuck6000/wp-parsedown": "^1.0",
+        "wpackagist-plugin/wordpress-https": "^3.3",
+        "wpackagist-plugin/wp-mail-smtp": "^0.9",
+        "wpackagist-plugin/members": "^1.1"
     },
     "extra": {
         "installer-paths": {
             "web/app/mu-plugins/{$name}/": [
                 "type:wordpress-muplugin",
+                "friartuck6000/wp-parsedown",
                 "wpackagist-plugin/wp-mail-smtp"
             ],
             "web/app/plugins/{$name}/": [ "type:wordpress-plugin" ],

@@ -1,43 +1,67 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e0403b00c786ac810d67e50a84ab7ee3",
+    "hash": "465951715c074e30869f17c01720f1b8",
+    "content-hash": "bf48b3624d43198458b465281b3a90a2",
     "packages": [
         {
-            "name": "asmbs/wp-deblogify",
-            "version": "1.0.1",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/asmbs/wp-deblogify/archive/v1.0.1.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "wordpress-plugin"
-        },
-        {
             "name": "asmbs/wp-ip",
-            "version": "1.0.1",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asmbs/wp-ip.git",
+                "reference": "e8524a35afa1c71e864e52d760b6bf51fc43b6fd"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/asmbs/wp-ip/archive/v1.0.1.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/asmbs/wp-ip/zipball/e8524a35afa1c71e864e52d760b6bf51fc43b6fd",
+                "reference": "e8524a35afa1c71e864e52d760b6bf51fc43b6fd",
+                "shasum": ""
             },
-            "type": "wordpress-plugin"
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Tucker",
+                    "email": "kyleatucker@gmail.com"
+                }
+            ],
+            "description": "See the IP address of your WordPress instance in the admin bar.",
+            "time": "2016-03-01 13:56:14"
         },
         {
-            "name": "asmbs/wp-sugar",
-            "version": "0.4.2",
+            "name": "asmbs/wp-unblog",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/asmbs/wp-unblog.git",
+                "reference": "ccacaee22fcc53bab2433a75d32513ea34886eb1"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/asmbs/wp-sugar/archive/v0.4.2.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/asmbs/wp-unblog/zipball/ccacaee22fcc53bab2433a75d32513ea34886eb1",
+                "reference": "ccacaee22fcc53bab2433a75d32513ea34886eb1",
+                "shasum": ""
             },
-            "type": "wordpress-muplugin"
+            "type": "wordpress-plugin",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Tucker",
+                    "email": "kyleatucker@gmail.com"
+                }
+            ],
+            "description": "Remove the admin UI for blog-centric components like posts and comments.",
+            "time": "2016-03-01 14:36:48"
         },
         {
             "name": "composer/installers",
@@ -138,15 +162,125 @@
             "time": "2016-01-27 12:54:22"
         },
         {
-            "name": "friartuck6000/wp-parsedown",
-            "version": "0.5.3",
+            "name": "erusev/parsedown",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.3.zip",
-                "reference": null,
-                "shasum": null
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+                "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+                "shasum": ""
             },
-            "type": "wordpress-muplugin"
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "time": "2015-10-04 16:44:32"
+        },
+        {
+            "name": "erusev/parsedown-extra",
+            "version": "0.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown-extra.git",
+                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown-extra/zipball/0db5cce7354e4b76f155d092ab5eb3981c21258c",
+                "reference": "0db5cce7354e4b76f155d092ab5eb3981c21258c",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown": "~1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ParsedownExtra": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "An extension of Parsedown that adds support for Markdown Extra.",
+            "homepage": "https://github.com/erusev/parsedown-extra",
+            "keywords": [
+                "markdown",
+                "markdown extra",
+                "parsedown",
+                "parser"
+            ],
+            "time": "2015-11-01 10:19:22"
+        },
+        {
+            "name": "friartuck6000/wp-parsedown",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/friartuck6000/wp-parsedown.git",
+                "reference": "f5e95584d60ab034844cf8624832dbe859cbee42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/friartuck6000/wp-parsedown/zipball/f5e95584d60ab034844cf8624832dbe859cbee42",
+                "reference": "f5e95584d60ab034844cf8624832dbe859cbee42",
+                "shasum": ""
+            },
+            "require": {
+                "composer/installers": "^1.0",
+                "erusev/parsedown": "^1.6",
+                "erusev/parsedown-extra": "^0.7"
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Ft6k\\WpParsedown\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kyle Tucker",
+                    "email": "kyleatucker@gmail.com"
+                }
+            ],
+            "description": "Disable the WYSIWYG editor and author content in Markdown, with a live preview",
+            "time": "2016-03-01 05:29:05"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -285,16 +419,16 @@
             "time": "2015-12-29 15:10:30"
         },
         {
-            "name": "wpackagist-plugin/p3-profiler",
-            "version": "1.5.3.9",
+            "name": "wpackagist-plugin/members",
+            "version": "1.1.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/p3-profiler/",
-                "reference": "tags/1.5.3.9"
+                "url": "http://plugins.svn.wordpress.org/members/",
+                "reference": "tags/1.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/p3-profiler.1.5.3.9.zip",
+                "url": "https://downloads.wordpress.org/plugin/members.1.1.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -302,7 +436,7 @@
                 "composer/installers": "~1.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/p3-profiler/"
+            "homepage": "https://wordpress.org/plugins/members/"
         },
         {
             "name": "wpackagist-plugin/wordpress-https",
@@ -350,6 +484,7 @@
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.4"
     },
