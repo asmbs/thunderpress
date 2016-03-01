@@ -1,27 +1,22 @@
-# -- IDE & System Related Files #
-.buildpath
-.project
-.settings
-.DS_Store
-.idea/
-*.sublime-project
-*.sublime-workspace
-
 # -- Application
-web/app/plugins/*
-!web/app/plugins/.gitkeep
-web/app/mu-plugins/*
-!web/app/mu-plugins/.gitkeep
-web/app/upgrade
-web/app/uploads/*
-!web/app/uploads/.gitkeep
-!web/app/mu-plugins/disallow-indexing.php
-!web/app/mu-plugins/register-theme-directory.php
-!web/app/mu-plugins/bedrock-autoloader.php
 
-# -- WordPress
-web/wp
-web/.htaccess
+/web/app/plugins/*
+!/web/app/plugins/.gitkeep
+
+/web/app/mu-plugins/*
+!/web/app/mu-plugins/register-theme-directory.php
+!/web/app/mu-plugins/bedrock-autoloader.php
+!/web/app/mu-plugins/disallow-indexing.php
+
+/web/app/upgrade
+
+/web/app/uploads/*
+!/web/app/uploads/.gitkeep
+
+# -- WP install directory
+/web/wp/*
+!/web/wp/.gitkeep
+/web/.htaccess
 
 # -- WP-CLI
 db-sync
@@ -32,33 +27,15 @@ sql-dump-*.sql
 .env.*
 !.env.example
 
-# -- NPM
-node_modules
-
 # -- Mina environment configs
-config/deploy/*
-!config/deploy/environment.rb.example
+/config/deploy/*
+!/config/deploy/environment.rb.example
 
-# -- Other vendor packages (not WordPress-related)
+# -- Other vendor packages
 vendor/*
 !vendor/.gitkeep
 
-# -- Application defaults
-web/app/plugins/*
-!web/app/plugins/.gitkeep
-web/app/mu-plugins/*
-!web/app/mu-plugins/.gitkeep
-web/app/upgrade
-web/app/uploads/*
-!web/app/uploads/.gitkeep
-node_modules
-
-# -- Default MU plugins
-!web/app/mu-plugins/disallow-indexing.php
-!web/app/mu-plugins/register-theme-directory.php
-!web/app/mu-plugins/bedrock-autoloader.php
-
 # -- Integrated plugins and themes (kept as part of this package)
 # Example:
-# !web/app/plugins/my-plugin-folder/
-!web/app/plugins/ga-thunderpress/
+# !/web/app/plugins/my-plugin-folder/
+!/web/app/plugins/ga-thunderpress/

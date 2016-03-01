@@ -1,126 +1,65 @@
 {
-  "name": "asmbs/thunderpress",
-  "type": "project",
-  "license": "MIT",
-  "description": "A slimmer WordPress stack",
-  "homepage": "https://github.com/asmbs/thunderpress",
-  "authors": [
-    {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
-    },
-    {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
-    },
-    {
-      "name": "Kyle Tucker",
-      "email": "kyleatucker@gmail.com",
-      "homepage": "https://github.com/friartuck6000"
-    },
-    {
-      "name": "James Osterhout",
-      "email": "jrosterhout@gmail.com",
-      "homepage": "https://github.com/jamost"
-    }
-  ],
-  "keywords": [
-    "wordpress", "stack", "asmbs", "composer", "mina", "wp", "grunt"
-  ],
-  "support": {
-    "issues": "https://github.com/asmbs/thunderpress/issues",
-    "forum": "https://discourse.roots.io/category/bedrock"
-  },
-  "autoload": {
-    "psr-0": {"Roots\\Bedrock\\Installer": "scripts"}
-  },
-  "scripts": {
-    "salts": ["Roots\\Bedrock\\Installer::addSalts"],
-    "post-install-cmd": [
-      "echo \"Running \\033[32mnpm install\\033[0m to install NPM modules...\" && npm install --quiet"
+    "name": "asmbs/thunderpress",
+    "type": "project",
+    "license": "MIT",
+    "description": "Slim WordPress stack inspired by Bedrock",
+    "homepage": "https://github.com/asmbs/thunderpress",
+    "authors": [
+        {
+            "name": "Kyle Tucker",
+            "email": "kyleatucker@gmail.com",
+            "homepage": "https://github.com/friartuck6000"
+        },
+        {
+            "name": "James Osterhout",
+            "email": "jrosterhout@gmail.com",
+            "homepage": "https://github.com/jamost"
+        }
     ],
-    "post-update-cmd": [
-      "echo \"Running \\033[32mnpm install\\033[0m to update NPM modules...\" && npm install --quiet"
-    ]
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://wpackagist.org"
+    "keywords": [ "wordpress", "composer", "mina" ],
+    "support": {
+        "issues": "https://github.com/asmbs/thunderpress/issues"
     },
-    {
-      "type": "package",
-      "package": {
-        "name": "friartuck6000/wp-parsedown",
-        "type": "wordpress-muplugin",
-        "version": "0.5.3",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/friartuck6000/wp-parsedown/archive/v0.5.3.zip"
+    "autoload": {
+        "psr-4": {
+            "": "scripts/"
         }
-      }
     },
-    {
-      "type": "package",
-      "package": {
-        "name": "asmbs/wp-sugar",
-        "type": "wordpress-muplugin",
-        "version": "0.4.2",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/asmbs/wp-sugar/archive/v0.4.2.zip"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "asmbs/wp-ip",
-        "type": "wordpress-plugin",
-        "version": "1.0.1",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/asmbs/wp-ip/archive/v1.0.1.zip"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "asmbs/wp-deblogify",
-        "type": "wordpress-plugin",
-        "version": "1.0.1",
-        "dist": {
-          "type": "zip",
-          "url": "https://github.com/asmbs/wp-deblogify/archive/v1.0.1.zip"
-        }
-      }
-    }
-  ],
-  "require": {
-    "php": ">=5.4",
-    "johnpbloch/wordpress": "~4.4",
-    "composer/installers": "~1.0",
-    "vlucas/phpdotenv": "~2.2",
-    "wpackagist-plugin/wordpress-https": "~3.3",
-    "friartuck6000/wp-parsedown": "~0.5",
-    "asmbs/wp-sugar": "~0.4",
-    "asmbs/wp-ip": "~1.0",
-    "asmbs/wp-deblogify": "~1.0",
-    "wpackagist-plugin/p3-profiler": "~1.5",
-    "wpackagist-plugin/wp-mail-smtp": "~0.9"
-  },
-  "extra": {
-    "installer-paths": {
-      "web/app/mu-plugins/{$name}/": [
-        "type:wordpress-muplugin",
-        "wpackagist-plugin/wp-mail-smtp"
+    "scripts": {
+        "salts": [
+            "Roots\\Bedrock\\Installer::addSalts"
         ],
-      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
-      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+        "post-install-cmd": [],
+        "post-update-cmd": []
     },
-    "wordpress-install-dir": "web/wp"
-  }
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "johnpbloch/wordpress": "^4.4",
+        "composer/installers": "^1.0",
+        "vlucas/phpdotenv": "^2.2",
+        "asmbs/wp-ip": "^1.0",
+        "asmbs/wp-unblog": "^1.1",
+        "friartuck6000/wp-parsedown": "^1.0",
+        "wpackagist-plugin/wordpress-https": "^3.3",
+        "wpackagist-plugin/wp-mail-smtp": "^0.9",
+        "wpackagist-plugin/members": "^1.1"
+    },
+    "extra": {
+        "installer-paths": {
+            "web/app/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin",
+                "friartuck6000/wp-parsedown",
+                "wpackagist-plugin/wp-mail-smtp"
+            ],
+            "web/app/plugins/{$name}/": [ "type:wordpress-plugin" ],
+            "web/app/themes/{$name}/": [ "type:wordpress-theme" ]
+        },
+        "wordpress-install-dir": "web/wp"
+    }
 }
