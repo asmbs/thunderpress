@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0
+- Unforked from [roots/bedrock](https://github.com/roots/bedrock) so Thunderpress can be maintained as its own project.
+- Removed NPM and Grunt at the root level—these tools should be used independently within plugins and themes.
+- Removed all explicit repository definitions; dependencies are now fully installable via Packagist.
+- General code cleanup.
+
+-----
 
 ### 1.3.0
 - Update composer dependencies
