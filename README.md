@@ -5,7 +5,7 @@ A slim WordPress stack inspired heavily by [Bedrock](https://github.com/roots/be
 ## Features
 
 - Uses [Mina](http://nadarei.co/mina) for deploy management.
-- Includes the [wp-parswdown](https://github.com/friartuck6000/wp-parsedown) plugin to convert WordPress to a Markdown-only CMS.
+- Includes the [wp-parsedown](https://github.com/friartuck6000/wp-parsedown) plugin to convert WordPress to a Markdown-only CMS.
 - Adds several other common and useful plugins out of the box.
 - Uses [PHP dotenv](https://github.com/vlucals/phpdotenv) for more secure site config
 - Uses environment-specific config files
