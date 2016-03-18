@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fb8dc66e31cd28e50ab764404dc5ffe",
-    "content-hash": "3fbdb493e46cb3feb17430a86bb0bf85",
+    "hash": "496cab9212ac05dd58c0657dc62dac7b",
+    "content-hash": "77d288ad5319a724bb40c81fdb4f9cac",
     "packages": [
         {
             "name": "asmbs/wp-ip",
@@ -246,16 +246,16 @@
         },
         {
             "name": "friartuck6000/wp-parsedown",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/friartuck6000/wp-parsedown.git",
-                "reference": "f5e95584d60ab034844cf8624832dbe859cbee42"
+                "reference": "2c6fdcea241b395c855e71d027f00fd0aa0401c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/friartuck6000/wp-parsedown/zipball/f5e95584d60ab034844cf8624832dbe859cbee42",
-                "reference": "f5e95584d60ab034844cf8624832dbe859cbee42",
+                "url": "https://api.github.com/repos/friartuck6000/wp-parsedown/zipball/2c6fdcea241b395c855e71d027f00fd0aa0401c3",
+                "reference": "2c6fdcea241b395c855e71d027f00fd0aa0401c3",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +280,7 @@
                 }
             ],
             "description": "Disable the WYSIWYG editor and author content in Markdown, with a live preview",
-            "time": "2016-03-01 05:29:05"
+            "time": "2016-03-08 13:54:14"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -460,15 +460,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-mail-smtp",
-            "version": "0.9.5",
+            "version": "0.9.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-mail-smtp/",
-                "reference": "tags/0.9.5"
+                "reference": "tags/0.9.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-mail-smtp.0.9.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-mail-smtp.0.9.6.zip",
                 "reference": null,
                 "shasum": null
             },

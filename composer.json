@@ -22,15 +22,19 @@
     },
     "autoload": {
         "psr-4": {
-            "": "scripts/"
+            "ASMBS\\": "scripts/ASMBS/"
         }
     },
     "scripts": {
         "salts": [
-            "Roots\\Bedrock\\Installer::addSalts"
+            "ASMBS\\Thunderpress\\ScriptHandler::addSalts"
         ],
-        "post-install-cmd": [],
-        "post-update-cmd": []
+        "post-install-cmd": [
+            "ASMBS\\Thunderpress\\ScriptHandler::addSalts"
+        ],
+        "post-update-cmd": [
+            "ASMBS\\Thunderpress\\ScriptHandler::addSalts"
+        ]
     },
     "repositories": [
         {
@@ -63,7 +67,11 @@
             "web/app/plugins/{$name}/": [ "type:wordpress-plugin" ],
             "web/app/themes/{$name}/": [ "type:wordpress-theme" ]
         },
-        "wordpress-install-dir": "web/wp"
+        "wordpress-install-dir": "web/wp",
+        "dotenv": {
+            "file": ".env",
+            "dist-file": ".env.dist"
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
