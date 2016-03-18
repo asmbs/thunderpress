@@ -50,6 +50,9 @@
         "wpackagist-plugin/wp-mail-smtp": "^0.9",
         "wpackagist-plugin/members": "^1.1"
     },
+    "require-dev": {
+        "composer/composer": "^1.0@beta"
+    },
     "extra": {
         "installer-paths": {
             "web/app/mu-plugins/{$name}/": [
@@ -61,5 +64,7 @@
             "web/app/themes/{$name}/": [ "type:wordpress-theme" ]
         },
         "wordpress-install-dir": "web/wp"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
