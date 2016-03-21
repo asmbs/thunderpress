@@ -24,8 +24,8 @@ sql-dump-*.sql
 
 # -- Dotenv
 .env
-.env.*
-!.env.example
+.env.dist
+!.env.dist
 
 # -- Mina environment configs
 /config/deploy/*
