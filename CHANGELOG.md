@@ -1,12 +1,15 @@
 # Changelog
 
-## 2.1.0
+## 2.1.1
+- Fixed an error in an output message of the salt generator.
+
+-----
+
+### 2.1.0
 - Built an improved salt generator that:
     - _Replaces_ salt keys if they already exist in the file, instead of always appending them.
     - If keys _are_ being appended to the end of the file, ensures there is a newline so the new key doesn't get tacked onto the end of the last one in the file.
 - Renamed the Dotenv _distributed_ file to `.env.dist`.
-
------
 
 ### 2.0.0
 - Unforked from [roots/bedrock](https://github.com/roots/bedrock) so Thunderpress can be maintained as its own project.
