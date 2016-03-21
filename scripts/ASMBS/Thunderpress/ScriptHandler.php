@@ -70,7 +70,7 @@ class ScriptHandler
                 return 1;
             }
 
-            $io->write('<info>Copied <fg=white>'. self::$envFile .'</> contents to <fg=white>'. self::$distFile .'</>');
+            $io->write('<info>Copied <fg=white>'. self::$distFile .'</> contents to <fg=white>'. self::$envFile .'</>');
         }
 
         // Read the file
