@@ -1,60 +1,121 @@
-# -- Load extensions
+# Load extensions
 require 'mina/git'
 
-# -- Disable pretty-print to prevent known deploy issues
+# Disable pretty-print to prevent known deploy issues
 set :term_mode, :exec
 
-# -- Repository settings
-set :repo_name,  'asmbs/thunderpress' # <-- Replace this with your repo identifier
-set :repo_url, %[https://github.com/#{repo_name}]
-set :repository, %[#{repo_url}.git]
-set :default_mode, 'branch' # Default mode for deploys that don't specify a commit, tag or branch
-set :default_ref, 'master'  # Default ref for deploys that don't specify a commit, tag or branch
+# Repository settings
+#
+# Settings:
+#
+# - repo_name     The canonical name of your repository. Used by :repository.
+# - repository    The full URL to the repository.
+# - default_mode  Specify the mode (commit | tag | branch) to use by default.
+# - default_ref   Specify the reference (commit hash | tag name | branch name) to use
+#                 by default.
+#
+set :repo_name,    'asmbs/thunderpress'
+set :repository,   %[git@github.com:#{repo_name}.git]
+set :default_mode, 'branch'
+set :default_ref,  'master'
 
-# -- Global SSH settings
+
+# Global SSH settings
+#
 set :forward_agent, true
 
-# -- Shared paths and files
+
+# Shared paths and files
+#
+# Add shared paths and files (relative to the project root) here.
+#
+# NOTE: Make sure you queue the appropriate commands to create these items during the
+#       :setup task!
+#
 set :shared_paths, [
   'web/app/uploads',  # WordPress uploads path -- do not remove
   '.env'              # Environment configuration -- do not remove
 ]
 
-# -- Slack settings
+
+# Build script commands
+#
+# Add default build commands here. They will be run after the git repository has been
+# cloned and the release directory has been populated.
+#
+# You can also add environment-specific build commands in your deploy/environment.rb file
+# by adding commands to the `$env_build_commands` array.
+#
+$build_commands = [
+    %[composer install]
+]
+
+
+# Launch commands
+#
+# Add default launch commands here. They will be run after a build has successfully
+# completed and the release has been symlinked to `current`.
+#
+# You can also add environment-specific launch commands in your deploy/environment.rb file
+# by adding commands to the `$env_launch_commands` array.
+#
+$launch_commands = []
+
+
+# Clean commands
+#
+# Add default clean commands here. They will be run if a deploy or build step fails.
+#
+# You can also add environment-specific clean commands in your deploy/environment.rb file
+# by adding commands to the `$env_clean_commands` array.
+#
+$clean_commands = []
+
+
+# Slack settings
+#
+# The Thunderpress deploy automator can make use of a Slack webhook integration to post
+# deploy notifications to a channel or DM.
+#
+# Settings:
+#
+# - slack_enabled   Whether to enable the Slack integration (false by default).
+# - slack_url       Your service hook URL.
+# - slack_username  Optional username override.
+# - slack_channel   Optional channel override.
+#
 set :slack_enabled, false
-set :slack_key, 'YOUR_SLACK_KEY_HERE'
-set :slack_url, lambda { %[https://hooks.slack.com/services/#{slack_key}] }
-# set :slack_username, '' # Optional bot-name override
-# set :slack_channel, '' # Optional channel override
+set :slack_url,     %[https://hooks.slack.com/services/YOUR_INTEGRATION_KEY]
+# set :slack_username, ''
+# set :slack_channel,  ''
 
 
-# ----------------------------------------------------------------------------------------------
-# Environment setup
-# ----------------------------------------------------------------------------------------------
+# ==============================================================================================
+
+
+# Environment init -----------------------------------------------------------------------------
 
 task :environment do
 
-  # -- Get server from command-line argument, or default to production
+  # Get server from command-line argument, or default to production
   $server = ENV.has_key?('server') ? ENV['server'] : 'production'
 
-  # -- Generate deploy settings for each server
+  # Generate deploy settings for each server
   unless $server
     print_error %[A server must be specified.]
     exit
   end
 
-  # -- Load settings for environment
+  # Load environment configuration
   require_relative %[./deploy/#{$server}.rb]
 
-  # -- Set up commit/tag/branch references for deploy
+  # Set up commit/tag/branch references for deploy
   set_deploy_ref settings.default_mode, settings.default_ref
 
 end
 
 
-# ----------------------------------------------------------------------------------------------
-# Task: `setup`
-# ----------------------------------------------------------------------------------------------
+# Task: `setup` --------------------------------------------------------------------------------
 
 task :setup => :environment do
 
@@ -70,9 +131,7 @@ task :setup => :environment do
 end
 
 
-# ----------------------------------------------------------------------------------------------
-# Task: `deploy`
-# ----------------------------------------------------------------------------------------------
+# Task: `deploy` -------------------------------------------------------------------------------
 
 task :deploy => :environment do
   deploy do
@@ -82,33 +141,45 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'deploy:cleanup'
 
-    # -- Run `launch` subtask on successful deployment
-    to :launch do
-      # Run any set launch commands
-      if defined?($launch_commands) && !$launch_commands.empty?
-        $launch_commands.each { |cmd| queue! %[#{cmd}] }
-      end
-      ref = commit ? commit : branch
-      slack_notify %[Deploy successful!\\n*Project:* #{repo_name} @ <#{repo_url}/tree/#{ref}|#{ref}>\\n*Server:* #{$server}]
+    ref = commit ? commit : branch
+
+    # Configure :build subtask (after successful deploy)
+    to :build do
+        if defined? ($env_build_commands)
+            $build_commands.unshift(*$env_build_commands)
+            $build_commands.each { |cmd| queue! %[#{cmd}] }
+        end
+        slack_notify %[Build completed for _#{repo_name}_ (<#{repo_url}/tree/#{ref}|#{ref}>) on `#{$server}`]
     end
 
-    # -- Run `clean` subtask on failed deployment
+    # Configure :launch subtask (after successful build)
+    to :launch do
+        if defined? ($env_launch_commands)
+            $launch_commands.unshift(*$env_launch_commands)
+            $launch_commands.each { |cmd| queue! %[#{cmd}] }
+        end
+        slack_notify %[Successfully deployed _#{repo_name}_ (<#{repo_url}/tree/#{ref}|#{ref}>) on `#{$server}`]
+    end
+
+    # Configure :clean subtask (after failed deploy or build)
     to :clean do
-      if defined?($clean_commands) && !$clean_commands.empty?
-        $clean_commands.each { |cmd| queue! cmd }
-      end
-      slack_notify %[Deploy FAILED\\n*Project:* #{repo_name}\\n*Server:* #{$server}]
+        if defined? ($env_clean_commands)
+            $clean_commands.unshift(*$env_clean_commands)
+            $clean_commands.each { |cmd| queue! %[#{cmd}] }
+        end
+        slack_notify %[*DEPLOY FAILED:* _#{repo_name}_ (<#{repo_url}/tree/#{ref}|#{ref}>) on `#{$server}`]
     end
 
   end
 end
 
 
-# ----------------------------------------------------------------------------------------------
-# Helper methods
-# ----------------------------------------------------------------------------------------------
+# ==============================================================================================
 
-# -- Set repository reference (branch/commit/tag)
+
+# Helper methods -------------------------------------------------------------------------------
+
+# Set repository reference (branch/commit/tag)
 def set_deploy_ref(default_mode='branch', default_ref='master')
   # Load defaults first
   mode = default_mode
@@ -135,12 +206,12 @@ def set_deploy_ref(default_mode='branch', default_ref='master')
   end
 end
 
-# -- Check to see whether Slack can be used
+# Check to see whether Slack can be used
 def slack_enabled?
   return settings.slack_enabled && settings.slack_key
 end
 
-# -- Send Slack notification
+# Send Slack notification
 def slack_notify (message)
   # Bail if no Slack post URL is defined
   if !slack_enabled?
@@ -159,5 +230,3 @@ def slack_notify (message)
   # Queue the POST command
   queue %[curl -X POST --data-urlencode 'payload=#{payload}' #{settings.slack_url}]
 end
-
-
