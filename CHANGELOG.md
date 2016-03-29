@@ -1,9 +1,15 @@
 # Changelog
 
-## 2.1.1
-- Fixed an error in an output message of the salt generator.
+## 2.1.2
+- Reworked deploy configuration to:
+    1. Clean it up
+    2. Separate build commands from launch commands
+    3. Allow global build/launch/clean command queues that can be prepended by environment configurations.
 
 -----
+
+### 2.1.1
+- Fixed an error in an output message of the salt generator.
 
 ### 2.1.0
 - Built an improved salt generator that:
