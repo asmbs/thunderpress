@@ -63,7 +63,7 @@ class ScriptHandler
         $distFile = $root .'/'. self::$distFile;
 
         // Check if the .env file exists -- if not, copy the dist file
-        if (!file_exists($envFile)) {
+        if (!file_exists($envFile) || filesize($envFile) < 1) {
             if (!copy($distFile, $envFile)) {
                 $io->write('<error>Unable to copy the distributed .env file</error>');
 
